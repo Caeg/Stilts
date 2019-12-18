@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Home} from './Pages//Home';
+import {About} from './Pages/About';
+import {Contact} from './Pages/Contact';
+import {SignUp} from './Pages/SignUp';
+import {Woopsie} from './Pages/Woopsie';
+import {Layout} from './Components/Layout';
+import {NavigationBar} from './Components/NavigationBar';
+import { WhatStilts } from './Components/WhatStilts';
+import styled from 'styled-components';
 
-function App() {
+
+
+
+
+class App extends Component {
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <React.Fragment>
+      <NavigationBar />
+        <Router>
+            <Switch>
+              <Route exact path="/" component = {Home}/>
+              <Route path="/about" component = {About}/>
+              <Route path ="/SignUp" component = {SignUp}/>
+              <Route path="/contact" component = {Contact}/>
+              <Route component={Woopsie}/>
+            </Switch>
+        </Router>
+      
+     
+    </React.Fragment>
+    );
+  }
 }
 
 export default App;
